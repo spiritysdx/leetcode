@@ -39,6 +39,21 @@ func (this *RandomizedSet) Remove(val int) bool {
     return true
 }
 
+/**
+删除元素 Remove(val int)
+
+    检查是否存在: 首先，检查 values 中是否存在要删除的值。如果不存在，返回 false，表示删除失败。
+
+    删除过程:
+        获取要删除值的索引。
+        使用 nums 切片中的最后一个元素替换要删除元素的位置。这一步是为了保持切片的连续性（因为删除元素会导致切片中间出现空缺）。
+        更新最后一个元素在 values 中的索引，以反映它的新位置。
+        从 nums 切片中删除最后一个元素（即缩短切片）。
+        从 values 映射中删除该值。
+
+    返回结果: 返回 true，表示删除成功。
+*/
+
 /** 从集合中获取一个随机元素。 */
 func (this *RandomizedSet) GetRandom() int {
     return this.nums[rand.Intn(len(this.nums))] // 返回一个随机元素
