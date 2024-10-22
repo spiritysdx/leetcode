@@ -6,7 +6,13 @@ func groupAnagrams(strs []string) [][]string {
         // 将字符串转换为字节数组
         s := []byte(str)
         // 对字节数组进行排序
-        sort.Slice(s, func(i, j int) bool { return s[i] < s[j] })
+        sort.Slice(s, func(i, j int) bool { return s[i] < s[j] }) 
+        /**
+        通过这行代码，字节切片 s 中的字符会根据字典顺序进行排序。例如：
+        输入："bat" → []byte{'b', 'a', 't'}
+        排序后：[]byte{'a', 'b', 't'}
+        最终转换为字符串："abt"
+        **/
         // 将排序后的字节数组转换回字符串
         sortedStr := string(s)
         // 将原始字符串添加到对应排序后的字符串的切片中
