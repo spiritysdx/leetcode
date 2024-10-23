@@ -18,24 +18,33 @@
 //     return res
 // }
 
-// 从后往前遍历，构造温度单调递减的栈，栈中存储索引方便计算
+/**
+既然是数组中，下一个更大的元素，即用单调栈实现。
+
+既然是 栈，那么一定是 待入栈的元素 和 栈顶 比较。因为需找更大的元素，所以选择单调递减栈。因为只有此结构才可保证 栈顶 > 待入栈的元素。
+
+因为需找数组右侧下一个更大的元素，所以逆序遍历数组。因为逆序遍历才可保证 数组右侧的数都在栈里。而栈又是递减栈，才可通过栈顶 > 待入栈的元素，来保证 待入栈的元素 的 右侧第一个最大的元素 是 栈顶。
+
+注意 corner case：
+
+    求数组下一个更大的元素，则新push的元素 <= 栈顶时出栈，这里的条件是包含等号的。
+    求数组下一个更大于或等于的元素，则新push的元素 < 栈顶时出栈，这里的条件是不包含等号的。
+**/
+
 func dailyTemperatures(temperatures []int) []int {
-    stack := make([]int, 0) // 用来存储索引的栈
-    res := make([]int, len(temperatures)) // 结果数组，初始为0，长度与温度数组相同
+    stack := []int{} // 用于存储索引的栈
+    ans := make([]int, len(temperatures)) // 用于存储结果，长度与温度数组相同
     for i := len(temperatures) - 1; i >= 0; i-- { // 从右向左遍历温度数组
-        // 当栈不为空且当前温度大于等于栈顶所指的温度时，弹出栈顶
+        // 当栈不为空且当前温度大于或等于栈顶所指的温度时，弹出栈顶
         for len(stack) > 0 && temperatures[i] >= temperatures[stack[len(stack)-1]] {
-            stack = stack[:len(stack)-1]
+            stack = stack[:len(stack)-1] // pop栈顶
         }
-        // 如果栈为空，说明后面没有比当前温度高的天
-        if len(stack) == 0 {
-            res[i] = 0
-        } else {
-            // 否则栈顶的索引对应的温度就是下一天比当前温度高的天
-            res[i] = stack[len(stack)-1] - i
+        // 如果栈不为空，栈顶索引对应的温度就是下一个比当前温度高的天数
+        if len(stack) > 0 {
+            ans[i] = stack[len(stack)-1] - i // 计算天数差
         }
-        // 将当前索引压入栈中
-        stack = append(stack, i)
+        // 将当前索引压入栈
+        stack = append(stack, i) // push当前索引
     }
-    return res
+    return ans
 }
