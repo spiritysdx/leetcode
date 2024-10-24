@@ -14,7 +14,7 @@ go func(){
   }
 }()
 wait.Add(1)
-go func(){
+go func(wait *sync.WaitGroup){
   i := 'A'
   for {
     select {
