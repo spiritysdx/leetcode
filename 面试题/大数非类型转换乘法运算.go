@@ -33,7 +33,7 @@ func multiply(num1, num2 string) string {
 	var sb strings.Builder
 	for _, num := range res {
 		if !(sb.Len() == 0 && num == 0) { // 跳过前导零
-			sb.WriteByte(byte(num + '0'))
+			sb.WriteByte(byte(num + '0')) // 将有效数字转换为字符并添加到 sb 中
 		}
 	}
 	return sb.String()
@@ -41,12 +41,12 @@ func multiply(num1, num2 string) string {
 
 func main() {
   reader := bufio.NewReader(os.Stdin)
-	fmt.Print("请输入第一个数字: ")
-	num1, _ := reader.ReadString('\n')
-	num1 = strings.TrimSpace(num1) // 去除换行符和空格
-	fmt.Print("请输入第二个数字: ")
-	num2, _ := reader.ReadString('\n')
-	num2 = strings.TrimSpace(num2) // 去除换行符和空格
-	result := multiply(num1, num2)
-	fmt.Printf("%s * %s = %s\n", num1, num2, result)
+  fmt.Print("请输入第一个数字: ")
+  num1, _ := reader.ReadString('\n')
+  num1 = strings.TrimSpace(num1) // 去除换行符和空格
+  fmt.Print("请输入第二个数字: ")
+  num2, _ := reader.ReadString('\n')
+  num2 = strings.TrimSpace(num2) // 去除换行符和空格
+  result := multiply(num1, num2)
+  fmt.Printf("%s * %s = %s\n", num1, num2, result)
 }
