@@ -1,10 +1,10 @@
 package main
 
 import (
-	"fmt"
-	"strings"
 	"bufio"
+	"fmt"
 	"os"
+	"strings"
 )
 
 // multiply 字符串形式的乘法
@@ -19,14 +19,14 @@ func multiply(num1, num2 string) string {
 		for j := len(num2) - 1; j >= 0; j-- {
 			digit1 := int(num1[i] - '0')
 			digit2 := int(num2[j] - '0')
-			product := digit1 * digit2
+			product := digit1 * digit2 // 当前位的运算结果
 			// 位置索引
 			p1 := i + j
 			p2 := i + j + 1
 			// 累加到结果数组
-			sum := product + res[p2]
-			res[p2] = sum % 10
-			res[p1] += sum / 10
+			sum := product + res[p2] // 处理进位
+			res[p2] = sum % 10  // 进位
+			res[p1] += sum / 10 // 当前位
 		}
 	}
 	// 构建结果字符串
@@ -40,13 +40,13 @@ func multiply(num1, num2 string) string {
 }
 
 func main() {
-  reader := bufio.NewReader(os.Stdin)
-  fmt.Print("请输入第一个数字: ")
-  num1, _ := reader.ReadString('\n')
-  num1 = strings.TrimSpace(num1) // 去除换行符和空格
-  fmt.Print("请输入第二个数字: ")
-  num2, _ := reader.ReadString('\n')
-  num2 = strings.TrimSpace(num2) // 去除换行符和空格
-  result := multiply(num1, num2)
-  fmt.Printf("%s * %s = %s\n", num1, num2, result)
+	reader := bufio.NewReader(os.Stdin)
+	fmt.Print("请输入第一个数字: ")
+	num1, _ := reader.ReadString('\n')
+	num1 = strings.TrimSpace(num1) // 去除换行符和空格
+	fmt.Print("请输入第二个数字: ")
+	num2, _ := reader.ReadString('\n')
+	num2 = strings.TrimSpace(num2) // 去除换行符和空格
+	result := multiply(num1, num2)
+	fmt.Printf("%s * %s = %s\n", num1, num2, result)
 }
