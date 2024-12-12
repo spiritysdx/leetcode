@@ -1,4 +1,5 @@
 func canPartition(nums []int) bool {
+    // 万万不可排序，因为取值可能跳着取，非按顺序取值
     size := len(nums)
     if size < 2 { // 数组只有一个元素时，无法分割成两个子集
         return false
