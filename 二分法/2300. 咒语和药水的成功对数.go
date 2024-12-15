@@ -1,3 +1,4 @@
+// https://leetcode.cn/problems/successful-pairs-of-spells-and-potions/
 func successfulPairs(spells []int, potions []int, success int64) []int {
     sizeA, sizeB := len(spells), len(potions)
     res := []int{}
