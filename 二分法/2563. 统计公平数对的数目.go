@@ -41,3 +41,13 @@ func upperBound(nums []int, start, end, target int) int {
 	}
 	return end
 }
+
+// func countFairPairs(nums []int, lower, upper int) (ans int64) {
+// 	sort.Ints(nums)
+// 	for j, x := range nums {
+// 		r := sort.SearchInts(nums[:j], upper-x+1) // <= upper-nums[j] 的 nums[i] 的个数
+// 		l := sort.SearchInts(nums[:j], lower-x) // < lower-nums[j] 的 nums[i] 的个数
+// 		ans += int64(r - l)
+// 	}
+// 	return
+// }
