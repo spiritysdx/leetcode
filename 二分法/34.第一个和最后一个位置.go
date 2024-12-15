@@ -1,3 +1,4 @@
+// https://leetcode.cn/problems/find-first-and-last-position-of-element-in-sorted-array/description/
 func searchRange(nums []int, target int) []int {
     // 找等于target的(排除掉小于target的)
     left := 0
