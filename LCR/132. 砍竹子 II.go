@@ -2,14 +2,18 @@ func cuttingBamboo(bamboo_len int) int {
     const MOD = 1000000007 // 定义模数
     // 快速幂函数，用于计算 (base^exp) % mod
     fastPow := func(base, exp, mod int) int {
-        res := 1
-        for exp > 0 {
-            if exp%2 == 1 {
-                res = (res * base) % mod
+        res := 1 // 初始化结果为1，因为任何数的0次幂都是1
+        for exp > 0 { // 当指数大于0时，持续循环
+            if exp%2 == 1 { 
+                // 如果指数是奇数，将当前的base乘到结果中，并取模
+                res = (res * base) % mod 
             }
-            base = (base * base) % mod
-            exp /= 2
+            // 将base平方，计算下一步的幂，且取模，防止溢出
+            base = (base * base) % mod 
+            // 指数除以2（相当于指数右移一位）
+            exp /= 2 
         }
+        // 返回最终结果
         return res
     }
     // 如果竹子长度小于等于3，直接返回长度减1
