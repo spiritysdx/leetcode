@@ -2,7 +2,7 @@
 func threeSumClosest(nums []int, target int) int {
 	// 排序数组
 	sort.Ints(nums)
-	res := nums[0] + nums[1] + nums[2] // 初始化为前三个数的和
+	res := nums[0] + nums[1] + nums[2] // 初始化为前三个数的和，存储与target最接近的和
 	size := len(nums)
 	for i := 0; i < size-2; i++ {
 		left := i + 1
