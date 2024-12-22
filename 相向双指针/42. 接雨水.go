@@ -37,3 +37,21 @@ func max(a, b int) int {
     }
     return b
 }
+
+
+// func trap(height []int) (ans int) {
+//     // 哪个短则移动哪边，最后在最高处相遇
+//     left, right, preMax, sufMax := 0, len(height)-1, 0, 0
+//     for left < right {
+//         preMax = max(preMax, height[left])
+//         sufMax = max(sufMax, height[right])
+//         if preMax < sufMax {
+//             ans += preMax - height[left]
+//             left++
+//         } else {
+//             ans += sufMax - height[right]
+//             right--
+//         }
+//     }
+//     return
+// }
