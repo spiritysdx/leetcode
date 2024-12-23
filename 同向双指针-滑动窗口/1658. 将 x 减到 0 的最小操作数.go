@@ -1,8 +1,8 @@
 // https://leetcode.cn/problems/minimum-operations-to-reduce-x-to-zero/description/
 func minOperations(nums []int, x int) int {
     target := -x // 将目标值初始化为-x，稍后会通过累加数组元素调整
-    for _, x := range nums {
-        target += x // 计算数组元素的总和减去x的值，最终目标是找到和为target的最长子数组
+    for _, v := range nums {
+        target += v // 计算数组元素的总和减去v的值，最终目标是找到和为target的最长子数组
     }
     if target < 0 { // 如果全部移除也无法满足要求（总和小于x），返回-1
         return -1
