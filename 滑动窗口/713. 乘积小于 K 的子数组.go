@@ -8,6 +8,7 @@ func numSubarrayProductLessThanK(nums []int, k int) int {
     left := 0 // 左指针
     ans := 0  // 符合条件的子数组数量
     // 遍历数组，right 为右指针
+    // 每当R向右移动一次就增加从L到R个那么多的子区间，以R为基准增加子区间
     for right, x := range nums {
         temp *= x // 更新当前子数组的乘积
         // 当乘积大于等于 k 时，移动左指针，缩小子数组范围
