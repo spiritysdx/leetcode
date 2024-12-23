@@ -16,7 +16,7 @@ func longestSemiRepetitiveSubstring(s string) int {
             }
             prev = i - 1 // 记录当前重复字符的位置
         }
-        // 更新最大长度
+        // 更新最大长度，此时需要保证这之前的start到index至多有一次重复字符
         ans = max(ans, i-start+1)
     }
     return ans
