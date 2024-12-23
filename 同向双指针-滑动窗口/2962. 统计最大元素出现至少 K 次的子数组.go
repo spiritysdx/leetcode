@@ -19,7 +19,7 @@ func countSubarrays(nums []int, k int) int64 {
         }
         for temp >= k {
             // 累加以 start 开头、以 end 结尾的子数组数量
-            ans += size - end
+            ans += size - end // 当前数组可以，那么比这个数组长的后续的数组也可以
             if nums[start] == maxNum {
                 temp -= 1
             }
