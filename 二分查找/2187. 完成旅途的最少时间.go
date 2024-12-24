@@ -14,10 +14,11 @@ func minimumTime(time []int, totalTrips int) int64 {
             trips += mid/t  // 在当前时间内完成的旅途数
         }
         if trips >= totalTrips {  // 如果在mid时间内可以完成的旅途数大于等于目标旅途数
-            right = mid  // 将右指针更新为mid
+            right = mid  // 将右指针更新为mid，增大范围
         } else {
             left = mid + 1  // 否则，将左指针更新为mid + 1，缩小范围
         }
     }
     return int64(left)  // 返回左指针的值，即最少时间
 }
+
