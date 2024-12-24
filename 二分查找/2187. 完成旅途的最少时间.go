@@ -5,7 +5,7 @@ func minimumTime(time []int, totalTrips int) int64 {
     left := 0  // 左指针初始化为0
     right := time[0]*totalTrips  // 右指针初始化为完成最大旅途所需的时间，即最短时间乘以总旅途数
     for left < right {  // 当左指针小于右指针时，继续进行二分查找
-        mid := left + (right-left)/2  // 计算中间值
+        mid := left + (right-left)/2  // 计算中间值，当前循环检索的是当前mid值的时长下行驶的路程长度
         trips := 0  // 统计在mid时间内可以完成的总旅途数
         for _, t := range time {  // 遍历所有的时间数组元素
             if mid < t {  // 如果当前时间mid小于该元素时间，则跳出循环，因为该时间无法完成任何旅途
