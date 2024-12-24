@@ -3,7 +3,7 @@ func maxNumberOfAlloys(n int, k int, budget int, composition [][]int, stock []in
     // 定义二分查找的左边界为0
     left := 0
     // 定义二分查找的右边界为预算允许的最大可能值
-    right := budget + stock[0]
+    right := budget + stock[0] // +stock[0]是为了这个上界比实际最大值大，需要检索的范围包含了实际答案
     // 进行二分查找，直到左右边界相遇
     for left < right {
         // 计算中间值
