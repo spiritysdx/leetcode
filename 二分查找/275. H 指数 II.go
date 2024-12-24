@@ -13,3 +13,17 @@ func hIndex(citations []int) int {
     }
     return size - left // 返回符合 h 指数定义的值
 }
+
+/**
+在二分查找的过程中：
+
+    如果 citations[mid] < size - mid:
+        意味着从 mid 开始到数组末尾，有 size - mid 篇论文的引用次数比当前值 citations[mid] 更大。
+        换句话说，citations[mid] 太小，无法满足 h 指数 的条件。
+        因此，我们需要在更右侧寻找可能的答案，所以移动左指针 (left = mid + 1)。
+
+    如果 citations[mid] >= size - mid:
+        表示当前 mid 对应的引用次数足够大，可能是一个合法的 h 指数 候选值。
+        但我们还需要继续往左侧查找，看看是否存在更小的 mid 也满足条件。
+        因此，我们移动右指针 (right = mid)。
+**/
