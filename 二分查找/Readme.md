@@ -6,6 +6,6 @@
 
 只要见到要求时间复杂度为 O(log n) 的算法的，基本就是二分法。
 
-二分查找的开区间写法(left和right更新都mid，left先设置-1再+1<right,right=size-1)、左闭右开(left更新mid+1,right更新mid，left<right, 分别设置0和size)写法必须掌握，用的非常多，都使用 mid=left+(right-left)/2，都回传left为结果。
+二分查找的开区间写法(left和right更新都mid，left先设置-1再+1<right,right=size-1)、左闭右开(left更新mid+1,right更新mid，left<right, 分别设置0和size)写法必须掌握，用的非常多，都使用 mid=left+(right-left)/2，开区间写法回传right，左闭右开写法回传left位置。
 
 mid要区分是在原有给的数组/切片中找位置，还是在自己设置好的边界条件构成的连续序列中找位置。
