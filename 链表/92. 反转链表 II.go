@@ -16,7 +16,7 @@ func reverseBetween(head *ListNode, left int, right int) *ListNode {
     }
     // 正常反转right-left+1次
     var pre *ListNode
-    current := p0.Next
+    current := p0.Next 
     for i := left-1; i<right; i++ { // 本来right要-1的，因为上面的需求，不需要-1了
         next := current.Next
         current.Next = pre
@@ -24,9 +24,9 @@ func reverseBetween(head *ListNode, left int, right int) *ListNode {
         current = next
     }
     // 逆转完毕后，p0现在还是在需要反转的上一个节点的上一个节点，current已经到了需要反转的最后一个节点的后一个节点上了
-    // pre指向反转链表的末尾节点(反转链表本身的最后一个节点)， cur指向反转链表的下一个节点(不在反转链表中)
-    p0.Next.Next = current // 连接反转链表本身和后一个节点
-    p0.Next = pre // 连接反转链表本身和前一个节点
+    // pre指向反转链表的末尾节点(反转链表本身的最后一个节点)， cur指向反转链表的下一个节点(不在反转链表中)，中断节点的第一个节点
+    p0.Next.Next = current // p0.Next最后到未拼接前最后中断的节点的上一个节点
+    p0.Next = pre 
     return dummyNode.Next
 }
 
