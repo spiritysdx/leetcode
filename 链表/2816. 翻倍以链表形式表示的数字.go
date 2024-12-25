@@ -39,3 +39,17 @@ func reverse(L *ListNode) (*ListNode, int) {
     }
     return pre, n
 }
+
+// 大于4的时候才进行进位+1，每次循环都去判断下一位是否大于4，是否在当前的val上+1
+// func doubleIt(head *ListNode) *ListNode {
+// 	if head.Val > 4 {
+// 		head = &ListNode{0, head}
+// 	}
+// 	for cur := head; cur != nil; cur = cur.Next {
+// 		cur.Val = cur.Val * 2 % 10
+// 		if cur.Next != nil && cur.Next.Val > 4 {
+// 			cur.Val++
+// 		}
+// 	}
+// 	return head
+// }
