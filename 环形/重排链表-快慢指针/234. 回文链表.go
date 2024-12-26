@@ -42,4 +42,5 @@ func reverse(head *ListNode) *ListNode {
     return pre
 }
 
-// 或者使用栈做或者切片做
+// 或者将值复制到数组中后用双指针法
+// 或者递归做
