@@ -29,3 +29,15 @@ func hasPathSum(root *TreeNode, targetSum int) bool {
     dfs(root, 0)
     return ans
 }
+
+func hasPathSum(root *TreeNode, targetSum int) bool {
+    // 自底向上
+    if root == nil {
+        return false
+    }
+    targetSum -= root.Val
+    if root.Left == root.Right {
+        return targetSum == 0
+    }
+    return hasPathSum(root.Left, targetSum) || hasPathSum(root.Right, targetSum)
+}
