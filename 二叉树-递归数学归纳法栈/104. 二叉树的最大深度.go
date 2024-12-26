@@ -22,3 +22,18 @@ func max(a,b int) int {
     }
     return b
 }
+
+// func maxDepth(root *TreeNode) (ans int) {
+//     var dfs func(*TreeNode, int)
+//     dfs = func(node *TreeNode, depth int) {
+//         if node == nil {
+//             return
+//         }
+//         depth++
+//         ans = max(ans, depth)
+//         dfs(node.Left, depth)
+//         dfs(node.Right, depth)
+//     }
+//     dfs(root, 0)
+//     return
+// }
