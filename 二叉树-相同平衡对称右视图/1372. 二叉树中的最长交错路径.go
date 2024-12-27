@@ -33,3 +33,5 @@ func longestZigZag(root *TreeNode) int {
     dfs(root.Right, true, 1)
     return maxLen
 }
+
+// 路径出发的节点可以从根节点也可以从子节点出发
