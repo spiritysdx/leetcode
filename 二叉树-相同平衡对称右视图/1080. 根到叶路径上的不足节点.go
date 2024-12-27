@@ -50,3 +50,22 @@ func sufficientSubset(root *TreeNode, limit int) *TreeNode {
     // 返回修改后的根节点
     return root
 }
+
+// func sufficientSubset(root *TreeNode, limit int) *TreeNode {
+//     if root == nil {
+//         return nil
+//     }
+//     limit -= root.Val
+//     if root.Left == root.Right { // root 是叶子
+//         if limit > 0 { // 从根到叶子的路径和小于 limit，删除叶子
+//             return nil
+//         }
+//         return root // 否则不删除
+//     }
+//     root.Left = sufficientSubset(root.Left, limit)
+//     root.Right = sufficientSubset(root.Right, limit)
+//     if root.Left == nil && root.Right == nil { // 如果儿子都被删除，就删 root
+//         return nil
+//     }
+//     return root // 否则不删 root
+// }
