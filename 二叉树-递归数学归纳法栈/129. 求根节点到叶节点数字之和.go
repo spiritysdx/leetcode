@@ -29,3 +29,18 @@ func sumNumbers(root *TreeNode) int {
     dfs(root, 0)
     return ans
 }
+
+// func sumNumbers(root *TreeNode) int {
+//     return dfs(root, 0)
+// }
+
+// func dfs(root *TreeNode, x int) int {
+//     if root == nil {
+//         return 0
+//     }
+//     x = x*10 + root.Val
+//     if root.Left == root.Right { // root 是叶子节点
+//         return x
+//     }
+//     return dfs(root.Left, x) + dfs(root.Right, x)
+// }
