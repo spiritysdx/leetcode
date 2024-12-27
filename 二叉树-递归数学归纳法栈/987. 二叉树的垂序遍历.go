@@ -7,6 +7,7 @@
  *     Right *TreeNode
  * }
  */
+// 还需要熟悉 slices.SortFunc 的使用
 func verticalTraversal(root *TreeNode) [][]int {
     // 每个三元组表示 (row, col, val)，你需要把这些三元组按照 col 分组，也就是把 col 相同的分到同一组，
     // 每组只保留 val，每组的 val 按照 row 从小到大排序，row 相同的按照 val 从小到大排序。分组后的结果就是答案 [[4],[2],[1,5,6],[3],[7]]。
