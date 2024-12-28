@@ -32,3 +32,48 @@
 //     }
 //     return ans
 // }
+
+
+func closestNodes(root *TreeNode, queries []int) [][]int {
+    // 用中序遍历构建非递减序列
+    temp := []int{}
+    var dfs func(*TreeNode)
+    dfs = func(node *TreeNode) {
+        if node == nil {
+            return
+        }
+        dfs(node.Left)
+        temp = append(temp, node.Val)
+        dfs(node.Right)
+    }
+    dfs(root)
+    // 二分查找最近的值
+    ans := [][]int{}
+    for _, target := range queries {
+        l, r := 0, len(temp)-1
+        for l <= r {
+            mid := l + (r-l)/2
+            if temp[mid] < target {
+                l = mid + 1
+            } else {
+                r = mid - 1
+            }
+        }
+        // 计算左边和右边的最近值
+        leftClosest := -1
+        if r >= 0 {
+            leftClosest = temp[r]
+        }
+        rightClosest := -1
+        if l < len(temp) {
+            rightClosest = temp[l]
+        }
+        // 添加结果
+        if leftClosest == target || rightClosest == target {
+            ans = append(ans, []int{target, target})
+        } else {
+            ans = append(ans, []int{leftClosest, rightClosest})
+        }
+    }
+    return ans
+}
