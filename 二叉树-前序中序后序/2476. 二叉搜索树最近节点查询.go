@@ -59,6 +59,9 @@ func closestNodes(root *TreeNode, queries []int) [][]int {
                 r = mid - 1
             }
         }
+        // 当查找结束时：
+        // r 指向目标值左边的最近一个值，或越界到 -1。
+        // l 指向目标值右边的最近一个值，或越界到 len(temp)。
         // 计算左边和右边的最近值
         leftClosest := -1
         if r >= 0 {
