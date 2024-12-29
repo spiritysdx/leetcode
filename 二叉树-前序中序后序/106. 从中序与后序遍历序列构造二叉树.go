@@ -15,6 +15,6 @@ func buildTree(inorder []int, postorder []int) *TreeNode {
     index := slices.Index(inorder, postorder[size-1]) // 左子树大小
     node := &TreeNode{Val: postorder[size-1]}
     node.Left = buildTree(inorder[:index], postorder[:index])
-	node.Right = buildTree(inorder[index+1:], postorder[index:len(postorder)-1])
+    node.Right = buildTree(inorder[index+1:], postorder[index:len(postorder)-1])
     return node
 }
