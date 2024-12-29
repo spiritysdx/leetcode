@@ -7,6 +7,7 @@
  *     Right *TreeNode
  * }
  */
+// 两个切片
 func levelOrder(root *TreeNode) [][]int {
     if root == nil {
         return nil
@@ -26,6 +27,32 @@ func levelOrder(root *TreeNode) [][]int {
             }
         }
         cur = nxt
+        ans = append(ans, temp)
+    }
+    return ans
+}
+
+// 一个队列
+func levelOrder(root *TreeNode) [][]int {
+    if root == nil {
+        return nil
+    }
+    ans := [][]int{}
+    cur := []*TreeNode{root}
+    for len(cur) > 0 {
+        size := len(cur)
+        temp := []int{}
+        for i := 0; i < size; i++ {
+            node := cur[0]
+            cur = cur[1:]
+            temp = append(temp, node.Val)
+            if node.Left != nil {
+                cur = append(cur, node.Left)
+            }
+            if node.Right != nil {
+                cur = append(cur, node.Right)
+            }
+        }
         ans = append(ans, temp)
     }
     return ans
