@@ -55,3 +55,15 @@ func bubbleSort(nums []int) []int {
     }
     return sorted
 }
+
+// 哈希表存储中间检索过的值，下次需要用的时候检索一下
+func twoSum(nums []int, target int) []int {
+    tempMap := map[int]int{} // 键值对： 检索过的值，位置
+    for index, value := range nums {
+        if v, ok := tempMap[target-value]; ok {
+            return []int{index, v}
+        }
+        tempMap[value] = index
+    }
+    return nil
+}
