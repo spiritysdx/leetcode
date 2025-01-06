@@ -14,7 +14,9 @@ mid要区分是在原有给的数组/切片中找位置，还是在自己设置�
         l, r := 0, len(temp)-1
         for l <= r {
             mid := l + (r-l)/2
-            if temp[mid] < target {
+            if temp[mid] == target {
+                return mid // 找到了目标值，直接返回位置
+            } else if temp[mid] < target {
                 l = mid + 1
             } else {
                 r = mid - 1
