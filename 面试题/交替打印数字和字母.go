@@ -19,7 +19,7 @@ go func(wait *sync.WaitGroup){
   for {
     select {
      case <- letters:
-      if z > 'Z' {
+      if i > 'Z' {
         wait.Done()
         return
       }
