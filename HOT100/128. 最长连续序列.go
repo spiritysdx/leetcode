@@ -8,7 +8,7 @@ func longestConsecutive(nums []int) int {
     maxLength := 0
     // 遍历哈希表中的每个数字
     for num := range tempMap {
-        // 如果当前数字是序列的起点（即num-1不存在于哈希表中）
+        // 只有当当前数字是序列的起点时才计算，可以去除很多重复计算
         if tempMap[num-1] == 0 {
             currentNum := num
             currentLength := 1
