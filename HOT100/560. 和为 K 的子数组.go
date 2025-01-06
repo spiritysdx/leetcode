@@ -14,3 +14,21 @@ func subarraySum(nums []int, k int) int {
     }
     return ans
 }
+
+func subarraySum(nums []int, k int) int {
+    // 前缀和生成
+    temp := []int{0}
+    s := 0
+    for _, v := range nums {
+        s += v
+        temp = append(temp, s)
+    }
+    // 遍历前缀和，如果存在 当前前缀和-目标和值 的记录存在，证明去掉这个 差值的和 的时候剩下的连续数组就是目标和值的数组
+    ans := 0
+    tempMap := map[int]int{}
+    for _, v := range temp {
+        ans += tempMap[v-k]
+        tempMap[v]++
+    }
+    return ans
+}
