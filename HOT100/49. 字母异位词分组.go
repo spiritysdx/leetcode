@@ -1,4 +1,5 @@
 // https://leetcode.cn/problems/group-anagrams/?envType=study-plan-v2&envId=top-100-liked
+// 关键点，异位词的顺序位置的形式一致
 func groupAnagrams(strs []string) [][]string {
     // 创建 map 用于存储分组，key 是排序后的字符串，value 是原始字符串的数组
     groups := make(map[string][]string)
