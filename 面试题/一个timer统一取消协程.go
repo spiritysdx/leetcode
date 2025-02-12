@@ -7,15 +7,15 @@ import (
 	"time"
 )
 
-func worker(ctx context.Context, id int, wg *sync.WaitGroup) {
+func test(ctx context.Context, wg *sync.WaitGroup) {
 	defer wg.Done()
 	for {
 		select {
-		case <-ctx.Done(): // 监听全局 context 的取消信号
-			fmt.Printf("Worker %d received stop signal, exiting...\n", id)
+		case <-ctx.Done():
+			fmt.Println("Done")
 			return
 		default:
-			fmt.Printf("Worker %d is running...\n", id)
+			fmt.Println("Running")
 			time.Sleep(1 * time.Second)
 		}
 	}
@@ -23,19 +23,17 @@ func worker(ctx context.Context, id int, wg *sync.WaitGroup) {
 
 func main() {
 	var wg sync.WaitGroup
-	ctx, cancel := context.WithCancel(context.Background()) // 统一的 ctx 控制所有协程
+	ctx, cancel := context.WithCancel(context.Background())
 	defer cancel()
-	// 外部使用 Timer 触发取消
 	timer := time.AfterFunc(5*time.Second, func() {
-		fmt.Println("Timeout reached! Stopping all workers...")
-		cancel() // 触发全局取消
+		fmt.Println("全局取消")
+		cancel()
 	})
-	// 启动多个 worker
-	for i := 1; i <= 3; i++ {
+	for i := 0; i < 3; i++ {
 		wg.Add(1)
-		go worker(ctx, i, &wg)
+		go test(ctx, &wg)
 	}
-	wg.Wait() // 等待所有 worker 退出
-	timer.Stop() // 确保 timer 释放
-	fmt.Println("All workers stopped, main function exits.")
+	wg.Wait()
+	timer.Stop()
+	fmt.Println("All Done")
 }
