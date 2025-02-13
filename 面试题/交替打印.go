@@ -5,7 +5,7 @@ import (
 	"sync"
 )
 
-// 必须两个add，两个done，记得哪个大于限制后关闭另一个的通道
+// 必须两个add，两个done，记得哪个大于限制后关闭另一个的通道，第二个channel要加一个通道是否已关闭的检测，如果已关闭直接return不用再close了
 func main() {
 	wg := sync.WaitGroup{}
 	ch1, ch2 := make(chan bool), make(chan bool)
